@@ -62,9 +62,23 @@ def run():
     element.send_keys(Keys.ENTER)
     WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
-    # wait for the checkbox to be clickable, then click it
+        # get the handle of the current window
+    main_window_handle = driver.current_window_handle
+
+    # check if there's a new window
+    if len(driver.window_handles) > 1:
+        # switch to the new window
+        for handle in driver.window_handles:
+            if handle != main_window_handle:
+                driver.switch_to.window(handle)
+                break
+
+    # now you can interact with the elements in the new window
     checkbox = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "notshow")))
     checkbox.click()
+
+    # switch back to the main window
+    driver.switch_to.window(main_window_handle)
 
     driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
 
