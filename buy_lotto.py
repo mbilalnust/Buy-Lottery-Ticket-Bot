@@ -30,10 +30,10 @@ def run():
     chrome_options = webdriver.ChromeOptions()    
     # Add your options as needed    
     options = [
-    # "--headless", # Runs Chrome in headless mode.
-    # "--no-sandbox", # Bypass OS security model
-    # "--disable-dev-shm-usage", # Overcomes limited resource problems
-    # "--window-size=1200,1200",
+    "--headless", # Runs Chrome in headless mode.
+    "--no-sandbox", # Bypass OS security model
+    "--disable-dev-shm-usage", # Overcomes limited resource problems
+    "--window-size=1200,1200",
     "--ignore-certificate-errors"
     ]
 
