@@ -67,20 +67,15 @@ def run():
             driver.switch_to.window(winId)
             driver.close()
             driver.switch_to.window(parent)
-            
+
     # Simulate pressing Enter
     element.send_keys(Keys.ENTER)
     WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
     driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
 
-    parent = driver.current_window_handle
-    uselessWindows = driver.window_handles
-    for winId in uselessWindows:
-        if winId != parent: 
-            driver.switch_to.window(winId)
-            driver.close()
-            driver.switch_to.window(parent)
+    # Wait for the popup to disappear
+    WebDriverWait(driver, 10).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
 
 
     # Click text=자동번호발급
