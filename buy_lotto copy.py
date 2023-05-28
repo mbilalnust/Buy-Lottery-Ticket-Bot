@@ -58,6 +58,18 @@ def run():
         EC.presence_of_element_located((By.XPATH, "//form[@name='jform']//*[contains(text(), '로그인')]"))
     )
 
+    # Wait for the popup window to appear and switch to it
+    WebDriverWait(driver, 10).until(EC.new_window_is_opened)
+
+    # Switch to the new window
+    driver.switch_to.window(driver.window_handles[-1])
+
+    # Close the popup window
+    driver.close()
+
+    # Switch back to the main window
+    driver.switch_to.window(driver.window_handles[0])
+
     parent = driver.current_window_handle
     uselessWindows = driver.window_handles
     for winId in uselessWindows:
@@ -71,14 +83,6 @@ def run():
     WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
     driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
-
-    parent = driver.current_window_handle
-    uselessWindows = driver.window_handles
-    for winId in uselessWindows:
-        if winId != parent: 
-            driver.switch_to.window(winId)
-            driver.close()
-            driver.switch_to.window(parent)
 
     # Wait for the popup to disappear
     WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
