@@ -17,6 +17,7 @@ import chromedriver_autoinstaller
 # 구매 개수를 설정
 COUNT = 1
 
+
 def run():
     
     load_dotenv()
