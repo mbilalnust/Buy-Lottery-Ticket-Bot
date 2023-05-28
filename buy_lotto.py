@@ -30,10 +30,10 @@ def run():
     chrome_options = webdriver.ChromeOptions()    
     # Add your options as needed    
     options = [
-    "--headless", # Runs Chrome in headless mode.
-    "--no-sandbox", # Bypass OS security model
-    "--disable-dev-shm-usage", # Overcomes limited resource problems
-    "--window-size=1200,1200",
+    # "--headless", # Runs Chrome in headless mode.
+    # "--no-sandbox", # Bypass OS security model
+    # "--disable-dev-shm-usage", # Overcomes limited resource problems
+    # "--window-size=1200,1200",
     "--ignore-certificate-errors"
     ]
 
@@ -62,14 +62,6 @@ def run():
     element.send_keys(Keys.ENTER)
     WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
-    parent = driver.current_window_handle
-    uselessWindows = driver.window_handles
-    for winId in uselessWindows:
-        if winId != parent: 
-            driver.switch_to.window(winId)
-            driver.close()
-            driver.switch_to.window(parent)
-
     driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
 
     parent = driver.current_window_handle
@@ -79,9 +71,6 @@ def run():
             driver.switch_to.window(winId)
             driver.close()
             driver.switch_to.window(parent)
-
-    # # Wait for the popup to disappear
-    # WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
 
 
     # Click text=자동번호발급

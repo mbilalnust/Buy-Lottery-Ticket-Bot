@@ -1,3 +1,4 @@
+#%%
 from selenium import webdriver
 import time 
 from selenium.webdriver.common.keys import Keys
@@ -10,7 +11,7 @@ from dotenv import load_dotenv
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import chromedriver_autoinstaller
-
+#%%
 # 구매 개수를 설정
 COUNT = 1
 
@@ -30,10 +31,10 @@ def run():
     chrome_options = webdriver.ChromeOptions()    
     # Add your options as needed    
     options = [
-    "--headless", # Runs Chrome in headless mode.
-    "--no-sandbox", # Bypass OS security model
-    "--disable-dev-shm-usage", # Overcomes limited resource problems
-    "--window-size=1200,1200",
+    # "--headless", # Runs Chrome in headless mode.
+    # "--no-sandbox", # Bypass OS security model
+    # "--disable-dev-shm-usage", # Overcomes limited resource problems
+    # "--window-size=1200,1200",
     "--ignore-certificate-errors"
     ]
 
@@ -58,17 +59,11 @@ def run():
         EC.presence_of_element_located((By.XPATH, "//form[@name='jform']//*[contains(text(), '로그인')]"))
     )
 
-    # Wait for the popup window to appear and switch to it
-    WebDriverWait(driver, 10).until(EC.new_window_is_opened)
+    # Simulate pressing Enter
+    element.send_keys(Keys.ENTER)
+    WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
-    # Switch to the new window
-    driver.switch_to.window(driver.window_handles[-1])
-
-    # Close the popup window
-    driver.close()
-
-    # Switch back to the main window
-    driver.switch_to.window(driver.window_handles[0])
+    driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
 
     parent = driver.current_window_handle
     uselessWindows = driver.window_handles
@@ -78,14 +73,8 @@ def run():
             driver.close()
             driver.switch_to.window(parent)
 
-    # Simulate pressing Enter
-    element.send_keys(Keys.ENTER)
-    WebDriverWait(driver, 10).until(EC.staleness_of(element))
-
-    driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
-
-    # Wait for the popup to disappear
-    WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
+    # # Wait for the popup to disappear
+    # WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
 
 
     # Click text=자동번호발급
@@ -124,3 +113,5 @@ def run():
 
 run()
 
+
+# %%
