@@ -44,6 +44,9 @@ def run():
 
     driver.get(url)
     # time.sleep(10)  # pause for 10 seconds
+            # get the handle of the current window
+    main_window_handle = driver.current_window_handle
+    
     username_input = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "[placeholder='아이디']")))
     username_input.click()
     username_input.send_keys(USER_ID)
@@ -62,8 +65,7 @@ def run():
     element.send_keys(Keys.ENTER)
     WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
-        # get the handle of the current window
-    main_window_handle = driver.current_window_handle
+
 
     # check if there's a new window
     if len(driver.window_handles) > 1:
