@@ -2,9 +2,10 @@ name: run buy_lotto.py
 
 on:
   push:
-    branches: [master, develop]
+    branches:
+      - main
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   build:
