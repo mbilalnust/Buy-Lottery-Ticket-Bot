@@ -58,6 +58,10 @@ def run():
         EC.presence_of_element_located((By.XPATH, "//form[@name='jform']//*[contains(text(), '로그인')]"))
     )
 
+    # Simulate pressing Enter
+    element.send_keys(Keys.ENTER)
+    WebDriverWait(driver, 10).until(EC.staleness_of(element))
+
     parent = driver.current_window_handle
     uselessWindows = driver.window_handles
     for winId in uselessWindows:
@@ -65,10 +69,6 @@ def run():
             driver.switch_to.window(winId)
             driver.close()
             driver.switch_to.window(parent)
-
-    # Simulate pressing Enter
-    element.send_keys(Keys.ENTER)
-    WebDriverWait(driver, 10).until(EC.staleness_of(element))
 
     driver.get("https://ol.dhlottery.co.kr/olotto/game/game645.do")
 
