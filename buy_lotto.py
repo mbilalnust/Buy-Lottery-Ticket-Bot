@@ -10,9 +10,6 @@ from dotenv import load_dotenv
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import chromedriver_autoinstaller
-# from pyvirtualdisplay import Display
-# # display = Display(visible=0, size=(800, 800))  
-# # display.start()
 
 # 구매 개수를 설정
 COUNT = 1
@@ -50,7 +47,6 @@ def run():
     for option in options:
         chrome_options.add_argument(option)
 
-        
     driver = webdriver.Chrome(options = chrome_options)
 
     driver.get(url)
