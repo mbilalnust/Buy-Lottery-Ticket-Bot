@@ -74,11 +74,10 @@ def run():
             driver.close()
             driver.switch_to.window(parent)
 
-    time.sleep(10)
 
     # Click text=자동번호발급
     # element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[text()="자동번호발급"]')))
-    element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'num2')))
+    element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'num2')))
     element.click()
     time.sleep(5)
 
