@@ -80,8 +80,8 @@ def run():
             driver.close()
             driver.switch_to.window(parent)
 
-    # Wait for the popup to disappear
-    WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
+    # # Wait for the popup to disappear
+    # WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.ID, "popupLayerAlert")))
 
 
     # Click text=자동번호발급
