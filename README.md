@@ -3,8 +3,7 @@
 This bot automates the process of purchasing lottery tickets from the Korean lottery website (동행복권). It uses Selenium WebDriver to automate browser interactions.
 
 ## 💡 Project Motivation
-
-I created this project to eliminate the need for physical visits to lottery retailers. Instead of making trips to purchase lottery tickets, this bot allows me to:
+I created this project to eliminate the need for physical visits to lottery retailers. Instead of making trips to purchase lottery tickets, this bot allows me to buy tickets. This project can be further extended to asking other willing users to be on the platform where one person will be managing multiple accounts. A further extension would be add frontend UI allowing users to get insights about their lottery status i.e. spending, profit, number of tickets bought etc.
 
 - Purchase lottery tickets online automatically
 - Save time and effort by automating the entire purchase process
