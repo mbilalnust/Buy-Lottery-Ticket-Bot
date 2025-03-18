@@ -83,11 +83,3 @@ Note: This scheduling method uses the Unix crontab system and works on macOS and
 ## ⚠️ Disclaimer
 
 This bot is for educational purposes only. Use at your own risk. The authors are not responsible for any misuse or consequences of using this bot.
-
-## 🤝 Contributing
-
-Feel free to fork this repository and submit pull requests for any improvements.
-
-## 📝 License
-
-This project is open source and available under the MIT License.
